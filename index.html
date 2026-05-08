@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Club Social y Deportivo Argentino — CSyDA</title>
+<meta name="description" content="Club Social y Deportivo Argentino (CSyDA / @clubargen). Club de la colectividad argentina residente en Chile. Vitacura, Santiago. Fundado en 2019." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --celeste: #74ACDF;
+    --celeste-dark: #4A8AC2;
+    --hueso: #FAF8F3;
+    --tinta: #0E1116;
+    --oro: #F4B940;
+    --gris: #6B6B6B;
+    --linea: rgba(14, 17, 22, 0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--hueso);
+    color: var(--tinta);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .italic-accent {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  a { color: inherit; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== NAV ===== */
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 248, 243, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .nav-brand .escudo-mini { width: 36px; height: 36px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tinta);
+    opacity: 0.75;
+    transition: opacity .15s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ===== HERO ===== */
+
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--linea);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 92px);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    color: var(--celeste-dark);
+    font-style: normal;
+  }
+  .hero-bajada {
+    font-size: 20px;
+    max-width: 480px;
+    margin-bottom: 32px;
+    color: var(--tinta);
+  }
+  .hero-bajada .italic-accent {
+    color: var(--celeste-dark);
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--gris);
+  }
+  .hero-meta strong { color: var(--tinta); display: block; font-size: 14px; }
+  .hero-escudo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-escudo { width: min(420px, 100%); height: auto; }
+
+  /* ===== ESCUDO SVG ===== */
+
+  .escudo-banda { fill: var(--tinta); }
+  .escudo-banda-text { fill: var(--hueso); font-family: 'Archivo Black', sans-serif; font-size: 9px; letter-spacing: 0.08em; }
+  .escudo-hex { fill: var(--celeste); stroke: var(--tinta); stroke-width: 4; }
+  .sol-rayo { fill: var(--oro); }
+  .sol-cara { fill: var(--oro); stroke: var(--tinta); stroke-width: 1.5; }
+  .escudo-año { fill: var(--hueso); font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.1em; }
+
+  /* ===== SECCIONES ===== */
+
+  section { padding: 80px 0; }
+  section:nth-of-type(even) { background: #fff; }
+
+  .section-title {
+    font-size: clamp(32px, 4.5vw, 56px);
+    margin-bottom: 16px;
+  }
+  .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--celeste-dark);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section-bajada {
+    font-size: 18px;
+    max-width: 640px;
+    margin-bottom: 48px;
+    color: var(--gris);
+  }
+
+  /* ===== HISTORIA ===== */
+
+  .historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  @media (max-width: 900px) { .historia-grid { grid-template-columns: 1fr; } }
+  .historia-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--tinta);
+    border-left: 3px solid var(--celeste);
+    padding: 8px 0 8px 24px;
+  }
+
+  /* ===== EQUIPOS ===== */
+
+  .equipos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) { .equipos-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .equipos-grid { grid-template-columns: 1fr; } }
+  .equipo-card {
+    background: var(--hueso);
+    border: 1px solid var(--linea);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .equipo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 17, 22, 0.08);
+  }
+  .equipo-foto {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--celeste), var(--celeste-dark));
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: var(--hueso);
+  }
+  .equipo-foto::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 20px,
+      rgba(255,255,255,0.08) 20px,
+      rgba(255,255,255,0.08) 40px
+    );
+  }
+  .equipo-tag {
+    position: relative;
+    z-index: 1;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .equipo-body { padding: 20px; }
+  .equipo-body h3 { font-size: 18px; margin-bottom: 6px; }
+  .equipo-body p { font-size: 14px; color: var(--gris); margin: 0; }
+
+  /* ===== D10S ===== */
+
+  .d10s-section {
+    background: var(--tinta);
+    color: var(--hueso);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .d10s-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--oro) 0%, transparent 60%);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .d10s-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  @media (max-width: 900px) { .d10s-grid { grid-template-columns: 1fr; } }
+  .d10s-big {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(120px, 22vw, 280px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+  .d10s-big .ten {
+    color: var(--oro);
+    text-decoration: underline;
+    text-decoration-thickness: 8px;
+    text-underline-offset: 18px;
+  }
+  .d10s-section h2 { font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 20px; }
+  .d10s-section p { color: rgba(250, 248, 243, 0.7); font-size: 17px; margin-bottom: 12px; }
+  .d10s-section .italic-accent { color: var(--oro); }
+  .d10s-meta {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,248,243,0.18);
+  }
+  .d10s-meta strong { display: block; font-family: 'Archivo Black', sans-serif; font-size: 22px; color: var(--oro); }
+  .d10s-meta span { font-size: 13px; color: rgba(250,248,243,0.6); }
+
+  /* ===== TORNEOS ===== */
+
+  .torneos-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--linea);
+  }
+  @media (max-width: 700px) { .torneos-list { grid-template-columns: 1fr; } }
+  .torneo-row {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--linea);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .torneo-row:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--linea); }
+  .torneo-row:nth-child(even) { padding-left: 24px; }
+  @media (max-width: 700px) {
+    .torneo-row:nth-child(odd) { padding-right: 0; border-right: 0; }
+    .torneo-row:nth-child(even) { padding-left: 0; }
+  }
+  .torneo-name { font-family: 'Archivo Black', sans-serif; font-size: 22px; }
+  .torneo-tag { font-size: 12px; color: var(--gris); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* ===== RIVALES ===== */
+
+  .rivales-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  @media (max-width: 700px) { .rivales-grid { grid-template-columns: repeat(2, 1fr); } }
+  .rival-card {
+    aspect-ratio: 1;
+    background: var(--hueso);
+    border: 1px solid var(--linea);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    line-height: 1.1;
+  }
+
+  /* ===== ACCIÓN SOCIAL ===== */
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 800px) { .social-grid { grid-template-columns: 1fr; } }
+  .social-card {
+    background: var(--celeste);
+    color: var(--tinta);
+    padding: 40px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .social-card.alt { background: var(--oro); }
+  .social-card h3 { font-size: 28px; margin-bottom: 16px; }
+  .social-card p { margin: 0; font-size: 16px; }
+
+  /* ===== MEMORIA ===== */
+
+  .memoria-section {
+    background: var(--tinta);
+    color: var(--hueso);
+    border-top: 4px solid var(--celeste);
+  }
+  .memoria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 800px) { .memoria-grid { grid-template-columns: 1fr; } }
+  .memoria-fecha {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 80px;
+    line-height: 0.9;
+    color: var(--celeste);
+    margin-bottom: 16px;
+  }
+  .memoria-section h2 { color: var(--hueso); }
+  .memoria-section h3 { font-size: 24px; margin-bottom: 12px; color: var(--hueso); }
+  .memoria-section p { color: rgba(250,248,243,0.75); font-size: 16px; }
+  .memoria-section .italic-accent { color: var(--celeste); }
+
+  /* ===== SPONSORS ===== */
+
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 800px) { .sponsors-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 500px) { .sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
+  .sponsor-cell {
+    aspect-ratio: 3/2;
+    background: var(--hueso);
+    border: 1px solid var(--linea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--tinta);
+  }
+
+  /* ===== CTA SUMATE ===== */
+
+  .cta {
+    background: var(--celeste);
+    padding: 100px 0;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 24px;
+  }
+  .cta p { font-size: 20px; margin-bottom: 32px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--tinta);
+    color: var(--hueso);
+    padding: 18px 36px;
+    text-decoration: none;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: transform .15s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+
+  footer {
+    background: var(--tinta);
+    color: var(--hueso);
+    padding: 60px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer h4 {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--celeste);
+    margin-bottom: 16px;
+  }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin-bottom: 8px; font-size: 14px; }
+  footer a { color: rgba(250,248,243,0.75); text-decoration: none; }
+  footer a:hover { color: var(--hueso); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,248,243,0.15);
+    font-size: 12px;
+    color: rgba(250,248,243,0.5);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-brand-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--hueso);
+  }
+  .footer-bio {
+    font-size: 14px;
+    color: rgba(250,248,243,0.6);
+    max-width: 280px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Plantilla SVG del escudo, reusable -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="escudo" viewBox="0 0 200 220">
+      <!-- hexágono -->
+      <polygon class="escudo-hex" points="100,10 188,55 188,165 100,210 12,165 12,55"/>
+      <!-- sol de mayo simplificado -->
+      <g transform="translate(100,100)">
+        <g class="sol-rayos">
+          <!-- rayos -->
+          <polygon class="sol-rayo" points="0,-58 6,-42 -6,-42"/>
+          <polygon class="sol-rayo" points="0,58 6,42 -6,42"/>
+          <polygon class="sol-rayo" points="-58,0 -42,6 -42,-6"/>
+          <polygon class="sol-rayo" points="58,0 42,6 42,-6"/>
+          <polygon class="sol-rayo" points="-41,-41 -28,-32 -32,-28"/>
+          <polygon class="sol-rayo" points="41,41 28,32 32,28"/>
+          <polygon class="sol-rayo" points="-41,41 -32,28 -28,32"/>
+          <polygon class="sol-rayo" points="41,-41 32,-28 28,-32"/>
+        </g>
+        <circle class="sol-cara" r="22"/>
+        <!-- carita -->
+        <circle cx="-7" cy="-3" r="1.5" fill="#0E1116"/>
+        <circle cx="7" cy="-3" r="1.5" fill="#0E1116"/>
+        <path d="M -6 6 Q 0 10 6 6" fill="none" stroke="#0E1116" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+      <!-- banda inferior con año -->
+      <rect class="escudo-banda" x="40" y="170" width="120" height="22"/>
+      <text class="escudo-año" x="100" y="186" text-anchor="middle">2019</text>
+      <!-- leyenda curva arriba (texto recto para simplicidad) -->
+      <text class="escudo-banda-text" x="100" y="40" text-anchor="middle">CLUB SOCIAL Y DEPORTIVO ARGENTINO</text>
+    </symbol>
+  </defs>
+</svg>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="#">
+      <svg class="escudo-mini"><use href="#escudo"/></svg>
+      <span>CSyDA</span>
+    </a>
+    <div class="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="#equipos">Equipos</a>
+      <a href="#d10s">Copa D10S</a>
+      <a href="#social">Acción social</a>
+      <a href="#memoria">Memoria</a>
+      <a href="#sumate">Sumate</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="hero-eyebrow">Vitacura · Santiago · desde 2019</p>
+      <h1>Club Social y Deportivo <em>Argentino</em></h1>
+      <p class="hero-bajada">
+        El club de la <span class="italic-accent">colectividad argentina</span> en Chile.
+        Fútbol, comunidad y memoria desde el barrio de Alonso de Córdova.
+      </p>
+      <div class="hero-meta">
+        <div><strong>2019</strong>Año de fundación</div>
+        <div><strong>4</strong>Categorías activas</div>
+        <div><strong>5ª</strong>Copa D10S en La Serena</div>
+      </div>
+    </div>
+    <div class="hero-escudo-wrap">
+      <svg class="hero-escudo" viewBox="0 0 200 220" aria-label="Escudo CSyDA">
+        <use href="#escudo"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="historia">
+  <div class="container">
+    <p class="section-eyebrow">Historia</p>
+    <h2 class="section-title">Siete años de <span class="italic-accent">cancha y barrio</span>.</h2>
+    <div class="historia-grid">
+      <div>
+        <p>
+          El Club Social y Deportivo Argentino —CSyDA para los de la casa— se fundó en 2019
+          en Vitacura, Santiago de Chile, como punto de encuentro de la colectividad argentina
+          residente en la Región Metropolitana. Lo que arrancó como un grupo de amigos
+          juntando jugadores para un campeonato terminó siendo lo que es hoy: un club con
+          cuatro categorías activas, una sede en remodelación, y una hinchada propia que se
+          reconoce con un grito: <span class="italic-accent">Vamos ARGar</span>.
+        </p>
+        <p>
+          La identidad del club está atravesada por dos cosas que no son negociables: el
+          fútbol bien jugado y el compromiso con la comunidad. Cada Copa D10S incluye una
+          colecta para el Albergue Protege; cada Copa Argentina se celebra como lo que es,
+          una cita con la patria que quedó del otro lado de la cordillera.
+        </p>
+      </div>
+      <div>
+        <blockquote class="historia-quote">
+          "Somos del barrio de Alonso de Córdova,
+          pero la hinchada se arma cada vez que hay
+          partido, sea en Vitacura o en La Serena."
+        </blockquote>
+        <p style="font-size: 13px; color: var(--gris); margin-top: 16px;">— Comisión directiva, 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equipos">
+  <div class="container">
+    <p class="section-eyebrow">Equipos</p>
+    <h2 class="section-title">Cuatro categorías, una sola camiseta.</h2>
+    <p class="section-bajada">
+      Fútbol 11 en cancha grande. Categoría DORADA para los maestros. Femenino activo desde
+      el origen. Y una formativa Sub 2009/2010 para los pibes que vienen subiendo.
+    </p>
+    <div class="equipos-grid">
+      <div class="equipo-card">
+        <div class="equipo-foto"><span class="equipo-tag">Primer<br/>Equipo</span></div>
+        <div class="equipo-body">
+          <h3>Primer Equipo</h3>
+          <p>Fútbol 11. DT: Jonatan Miranda. Capitán: Rama Corbascio.</p>
+        </div>
+      </div>
+      <div class="equipo-card">
+        <div class="equipo-foto" style="background: linear-gradient(135deg, var(--oro), #c98e1f);"><span class="equipo-tag">Dorada</span></div>
+        <div class="equipo-body">
+          <h3>Categoría DORADA</h3>
+          <p>+35 / oro. Maestros que siguen pisando la cancha.</p>
+        </div>
+      </div>
+      <div class="equipo-card">
+        <div class="equipo-foto" style="background: linear-gradient(135deg, #c84d8c, #832a59);"><span class="equipo-tag">Femenino</span></div>
+        <div class="equipo-body">
+          <h3>Equipo Femenino</h3>
+          <p>Activo desde el origen del club, en torneos locales y de la colectividad.</p>
+        </div>
+      </div>
+      <div class="equipo-card">
+        <div class="equipo-foto" style="background: linear-gradient(135deg, #2c8c5e, #154732);"><span class="equipo-tag">Sub<br/>09/10</span></div>
+        <div class="equipo-body">
+          <h3>Sub 2009/2010 masculino</h3>
+          <p>Categoría formativa. Los que vienen subiendo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="d10s" class="d10s-section">
+  <div class="container d10s-grid">
+    <div class="d10s-big">D<span class="ten">10</span>S</div>
+    <div>
+      <p class="section-eyebrow" style="color: var(--oro);">Torneo emblema</p>
+      <h2>Copa D10S — La Serena</h2>
+      <p>
+        En 2026 cumple su <span class="italic-accent">5ª edición</span>. Es el torneo
+        emblemático del club: un fin de semana en La Serena, hinchada que viaja, equipos
+        amigos que llegan de todo Chile y una colecta solidaria para el Albergue Protege
+        que se hace en alianza con la Municipalidad de La Serena.
+      </p>
+      <p>
+        El nombre es lo que parece: D10S = Dios + 10. Homenaje a Maradona,
+        homenaje al fútbol como liturgia barrial.
+      </p>
+      <div class="d10s-meta">
+        <div><strong>5</strong><span>Ediciones</span></div>
+        <div><strong>2026</strong><span>Próxima</span></div>
+        <div><strong>La Serena</strong><span>Sede</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="torneos">
+  <div class="container">
+    <p class="section-eyebrow">Calendario</p>
+    <h2 class="section-title">Otros torneos.</h2>
+    <p class="section-bajada">Además de la Copa D10S, el club participa en estas competencias.</p>
+    <div class="torneos-list">
+      <div class="torneo-row">
+        <span class="torneo-name">Copa Santiago</span>
+        <span class="torneo-tag">Local</span>
+      </div>
+      <div class="torneo-row">
+        <span class="torneo-name">Copa Plata</span>
+        <span class="torneo-tag">Local</span>
+      </div>
+      <div class="torneo-row">
+        <span class="torneo-name">Copa de Naciones</span>
+        <span class="torneo-tag">Colectividades</span>
+      </div>
+      <div class="torneo-row">
+        <span class="torneo-name">Liga Dos Ligados 2026</span>
+        <span class="torneo-tag">Liga regular</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rivales">
+  <div class="container">
+    <p class="section-eyebrow">El barrio</p>
+    <h2 class="section-title">Rivales y equipos amigos.</h2>
+    <p class="section-bajada">Ocho equipos con los que se juega seguido. Sin cancha no hay club, sin rivales no hay barrio.</p>
+    <div class="rivales-grid">
+      <div class="rival-card">Quiltros<br/>FC</div>
+      <div class="rival-card">Cancheros</div>
+      <div class="rival-card">Maestros<br/>FC</div>
+      <div class="rival-card">Halcones</div>
+      <div class="rival-card">Fortaleza</div>
+      <div class="rival-card">Crecer</div>
+      <div class="rival-card">Estudiantes<br/>Unidos</div>
+      <div class="rival-card">Academia</div>
+    </div>
+  </div>
+</section>
+
+<section id="social">
+  <div class="container">
+    <p class="section-eyebrow">Acción social</p>
+    <h2 class="section-title">Lo que se hace fuera de la cancha <span class="italic-accent">también es el club</span>.</h2>
+    <div class="social-grid">
+      <div class="social-card">
+        <h3>Albergue Protege — La Serena</h3>
+        <p>
+          Cada Copa D10S incluye una colecta solidaria para personas en situación de calle,
+          en alianza con la Municipalidad de La Serena. Es parte del torneo, no un anexo.
+        </p>
+      </div>
+      <div class="social-card alt">
+        <h3>Cajas de alimentos — Escuela Las Nieves</h3>
+        <p>
+          IV entrega de cajas de alimentos a familias de la Escuela Técnica Las Nieves,
+          en alianza con La Protect (compañía de seguros).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="memoria" class="memoria-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--celeste);">Memoria</p>
+    <h2 class="section-title">No es decoración, es identidad.</h2>
+    <div class="memoria-grid" style="margin-top: 48px;">
+      <div>
+        <div class="memoria-fecha">24M</div>
+        <h3>50 años del Golpe — Nunca Más</h3>
+        <p>
+          Cada 24 de marzo el club conmemora el aniversario del Golpe Militar en Argentina,
+          con la consigna <span class="italic-accent">Memoria, Verdad y Justicia</span>.
+          No hay club argentino que pueda mirar para otro lado en esta fecha.
+        </p>
+      </div>
+      <div>
+        <div class="memoria-fecha">02A</div>
+        <h3>Día del Veterano y Caídos en Malvinas</h3>
+        <p>
+          Cada 2 de abril, homenaje a los veteranos y caídos en la Guerra de Malvinas.
+          Visitas a <span class="italic-accent">"La Casa de D10S"</span> y al mural de Maradona en La Boca,
+          cuando se viaja.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sponsors">
+  <div class="container">
+    <p class="section-eyebrow">Sponsors y partners</p>
+    <h2 class="section-title">Los que bancan el proyecto.</h2>
+    <p class="section-bajada">Marcas amigas, partners institucionales y locales que sostienen al club.</p>
+    <div class="sponsors-grid">
+      <div class="sponsor-cell">FIT</div>
+      <div class="sponsor-cell">Stella<br/>Artois</div>
+      <div class="sponsor-cell">La Argentina<br/>Pizzería</div>
+      <div class="sponsor-cell">La Protect</div>
+      <div class="sponsor-cell">Marca<br/>Argentina</div>
+      <div class="sponsor-cell">Aniania<br/>Food</div>
+      <div class="sponsor-cell">Morfi<br/>Burger</div>
+      <div class="sponsor-cell">ArgmsJZ</div>
+      <div class="sponsor-cell">Maresta</div>
+      <div class="sponsor-cell" style="background: var(--celeste); color: var(--hueso);">+ vos<br/>?</div>
+    </div>
+  </div>
+</section>
+
+<section id="sumate" class="cta">
+  <div class="container">
+    <h2>Sumate al club.</h2>
+    <p>Argentino, chileno, hincha del fútbol, amigo de la colectividad. La puerta está abierta.</p>
+    <a class="cta-btn" href="mailto:presidencia@clubargen.com?subject=Quiero%20sumarme%20al%20club">Escribir a presidencia@clubargen.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <svg style="width:48px;height:48px"><use href="#escudo"/></svg>
+          <span class="footer-brand-text">CSyDA</span>
+        </div>
+        <p class="footer-bio">
+          Club Social y Deportivo Argentino<br/>
+          Vitacura, Santiago de Chile · desde 2019<br/>
+          Apodo: ARGar
+        </p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#equipos">Equipos</a></li>
+          <li><a href="#d10s">Copa D10S</a></li>
+          <li><a href="#social">Acción social</a></li>
+          <li><a href="#memoria">Memoria</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:presidencia@clubargen.com">presidencia@clubargen.com</a></li>
+          <li><a href="mailto:clubsocialydeportivoargentino@gmail.com">clubsocialydeportivoargentino@gmail.com</a></li>
+          <li><a href="mailto:deportescsyda@gmail.com">deportescsyda@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://instagram.com/clubargen" target="_blank" rel="noopener">Instagram @clubargen</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook CSyDA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Club Social y Deportivo Argentino — todos los derechos reservados</span>
+      <span>Sitio en construcción · Mockup v1</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
