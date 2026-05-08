@@ -12,7 +12,7 @@ Este documento es la fuente de verdad del proyecto. Contiene toda la informació
 - **Sigla oficial:** CSyDA
 - **Apodo de la hinchada:** ARGar (de "Vamos ARGar")
 - **Año de fundación:** 2019 (cumple 7 años en 2026)
-- **Ubicación:** Alonso de Córdova, Vitacura, Santiago de Chile (RM)
+- **Ubicación:** Santiago de Chile (RM). La bio de Instagram dice solo "Santiago de Chile RM CL" — el club no comunica barrio específico. "Vitacura / Alonso de Córdova" en versiones previas de esta doc fue inferencia no validada; pendiente de confirmar con la comisión.
 - **Tipo:** club de la colectividad argentina residente en Chile
 - **Bio Instagram literal:** "Club Social y Deportivo Argentino AR 🌎 📍 Santiago de Chile RM CL ✉️ clubsocialydeportivoargentino@gmail.com"
 - **Métricas IG:** 1.5K seguidores, 577 publicaciones, 631–648 siguiendo
@@ -79,7 +79,7 @@ Fit (camiseta), Stella Artois, La Argentina Pizzería (sponsor fundacional, sede
 
 ## 11. SEDE E INFRAESTRUCTURA
 
-- **Sede principal:** Vitacura (Alonso de Córdova), Santiago
+- **Sede principal:** Santiago (Región Metropolitana). Barrio/comuna específica a confirmar con la comisión — no se comunica en redes.
 - **Comedor en remodelación 2026**
 - Han jugado en el Estadio La Serena
 
@@ -104,7 +104,7 @@ Fit (camiseta), Stella Artois, La Argentina Pizzería (sponsor fundacional, sede
 - Historia
 - Equipos (primer equipo, Dorada, Femenino, Sub 2009/2010)
 - Copa D10S (sección destacada)
-- Sede Vitacura
+- Sede (ubicación a confirmar con la comisión)
 - Comisión Directiva
 - Acción social
 - Memoria (24M / 2A)
