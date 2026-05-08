@@ -10,7 +10,7 @@ El proyecto está en fase de documentación + mockup visual aprobado. La siguien
 
 **Antes de proponer cambios o agregar contenido, leer `docs/00-documentacion-base.md`.** Es la documentación oficial del club, con 14 secciones (identidad, estructura, contacto, identidad visual, categorías, rivales, torneos, componente social, conmemoraciones, sponsors, sede, archivo, propuesta técnica, pendientes).
 
-No inventar datos del club. Si falta información, va a la lista de pendientes (sección 14), no se rellena con suposiciones.
+Preferí información verificada. Si tenés que poner contenido provisional para que el sitio se vea completo, marcalo con `data-pendiente="..."` o `<!-- TODO copy/data/assets: ... -->` para que sea fácil encontrar y reemplazar después.
 
 ## Stack acordado
 
@@ -47,13 +47,13 @@ Razonamiento detallado en `docs/02-stack-tecnico.md`.
 
 ## Reglas de comportamiento para Claude Code
 
-1. **No inventar datos del club.** Nombres, fechas, palmarés, plantel, fundadores: si no está en la documentación, va a pendientes.
-2. **Antes de tocar el dominio o DNS, confirmar con el usuario.** El dominio hoy lo administra Squarespace; cualquier cambio de nameservers es coordinación con la comisión, no acción autónoma.
-3. **Para imágenes de placeholder usar SVG inline o cuadros de color**, nunca URLs de servicios externos como `via.placeholder.com` o stock photos genéricos. Cuando llegue el export oficial de Meta, ahí entran las fotos reales.
-4. **El archivo de Instagram debe venir del export oficial de Meta**, no de scrapers de terceros como `imginn.com` (caen, dependen de que el perfil siga público, sin alta resolución).
-5. **No agregar features hipotéticas:** tienda, sistema de socios pago, calendario sincronizado, etc. — solo si la comisión las pide explícitamente.
-6. **Idioma del usuario: español.** Comunicación, comentarios y commits en español.
-7. **Auto-aceptación de tool calls está activada.** No pedir confirmación para edits locales reversibles. Sí confirmar para acciones destructivas o que afecten sistemas compartidos (push a remote, deploy, cambios DNS).
+1. **Datos del club:** preferí verificados. Si ponés algo provisional para que el sitio no quede roto, marcalo en el HTML con `data-pendiente` o un comentario `<!-- TODO ... -->`, y registralo en `docs/03-assets-pendientes.md` para que sea reemplazo directo cuando llegue lo oficial.
+2. **Antes de tocar el dominio o DNS, confirmar.** El dominio `clubargen.com` hoy lo administra Squarespace; cambios de nameservers requieren coordinación con la comisión.
+3. **Imágenes:** se permiten provisionales encontradas en internet (sitios oficiales de los sponsors, Wikimedia, redes del club via espejos). Marcalas como provisionales y bajalas a `assets/...` cuando corresponda — evitá hotlink a CDNs de terceros que se pueden romper. Stock photos genéricos sin sentido sí evitar.
+4. **Instagram:** el export oficial de Meta es la fuente preferida. Mientras no llegue, espejos/scrapers (`imginn`, `picuki`, `dumpor`, etc.) son aceptables — la mayoría hoy bloquea WebFetch, así que probablemente requiera otra herramienta (Claude for Chrome con sesión activa, o que el admin descargue desde Instagram).
+5. **No agregar features fuera de scope:** tienda, sistema de socios pago, calendario sincronizado — solo si la comisión las pide.
+6. **Idioma:** español.
+7. **Auto-aceptación de tool calls activada.** Confirmá para acciones destructivas o que afecten sistemas compartidos (push, deploy, DNS, mensajes a terceros).
 
 ## Pendientes que solo puede aportar la comisión
 

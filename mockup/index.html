@@ -152,14 +152,9 @@
   }
   .hero-escudo { width: min(420px, 100%); height: auto; }
 
-  /* ===== ESCUDO SVG ===== */
+  /* ===== ESCUDO ===== */
 
-  .escudo-banda { fill: var(--tinta); }
-  .escudo-banda-text { fill: var(--hueso); font-family: 'Archivo Black', sans-serif; font-size: 9px; letter-spacing: 0.08em; }
-  .escudo-hex { fill: var(--celeste); stroke: var(--tinta); stroke-width: 4; }
-  .sol-rayo { fill: var(--oro); }
-  .sol-cara { fill: var(--oro); stroke: var(--tinta); stroke-width: 1.5; }
-  .escudo-año { fill: var(--hueso); font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: 0.1em; }
+  .hero-escudo, .escudo-mini { display: block; }
 
   /* ===== SECCIONES ===== */
 
@@ -426,6 +421,21 @@
     font-family: 'Archivo Black', sans-serif;
     font-size: 14px;
     color: var(--tinta);
+    text-decoration: none;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
+  }
+  a.sponsor-cell:hover {
+    transform: translateY(-2px);
+    border-color: var(--celeste);
+    box-shadow: 0 6px 14px rgba(14, 17, 22, 0.06);
+  }
+  .sponsor-cell-img { padding: 8px; }
+  .sponsor-cell-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
 
   /* ===== CTA SUMATE ===== */
@@ -506,44 +516,10 @@
 </head>
 <body>
 
-<!-- Plantilla SVG del escudo, reusable -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="escudo" viewBox="0 0 200 220">
-      <!-- hexágono -->
-      <polygon class="escudo-hex" points="100,10 188,55 188,165 100,210 12,165 12,55"/>
-      <!-- sol de mayo simplificado -->
-      <g transform="translate(100,100)">
-        <g class="sol-rayos">
-          <!-- rayos -->
-          <polygon class="sol-rayo" points="0,-58 6,-42 -6,-42"/>
-          <polygon class="sol-rayo" points="0,58 6,42 -6,42"/>
-          <polygon class="sol-rayo" points="-58,0 -42,6 -42,-6"/>
-          <polygon class="sol-rayo" points="58,0 42,6 42,-6"/>
-          <polygon class="sol-rayo" points="-41,-41 -28,-32 -32,-28"/>
-          <polygon class="sol-rayo" points="41,41 28,32 32,28"/>
-          <polygon class="sol-rayo" points="-41,41 -32,28 -28,32"/>
-          <polygon class="sol-rayo" points="41,-41 32,-28 28,-32"/>
-        </g>
-        <circle class="sol-cara" r="22"/>
-        <!-- carita -->
-        <circle cx="-7" cy="-3" r="1.5" fill="#0E1116"/>
-        <circle cx="7" cy="-3" r="1.5" fill="#0E1116"/>
-        <path d="M -6 6 Q 0 10 6 6" fill="none" stroke="#0E1116" stroke-width="1.5" stroke-linecap="round"/>
-      </g>
-      <!-- banda inferior con año -->
-      <rect class="escudo-banda" x="40" y="170" width="120" height="22"/>
-      <text class="escudo-año" x="100" y="186" text-anchor="middle">2019</text>
-      <!-- leyenda curva arriba (texto recto para simplicidad) -->
-      <text class="escudo-banda-text" x="100" y="40" text-anchor="middle">CLUB SOCIAL Y DEPORTIVO ARGENTINO</text>
-    </symbol>
-  </defs>
-</svg>
-
 <nav class="nav">
   <div class="container nav-inner">
     <a class="nav-brand" href="#">
-      <svg class="escudo-mini"><use href="#escudo"/></svg>
+      <img class="escudo-mini" src="assets/escudo.png" alt="" />
       <span>CSyDA</span>
     </a>
     <div class="nav-links">
@@ -569,13 +545,12 @@
       <div class="hero-meta">
         <div><strong>2019</strong>Año de fundación</div>
         <div><strong>4</strong>Categorías activas</div>
-        <div><strong>5ª</strong>Copa D10S en La Serena</div>
+        <div><strong>D10S</strong>Copa anual en La Serena</div>
       </div>
     </div>
     <div class="hero-escudo-wrap">
-      <svg class="hero-escudo" viewBox="0 0 200 220" aria-label="Escudo CSyDA">
-        <use href="#escudo"/>
-      </svg>
+      <!-- Escudo: descargado de la página de Facebook del club. Pendiente versión vectorial (SVG) oficial. -->
+      <img class="hero-escudo" src="assets/escudo.png" alt="Escudo Club Social y Deportivo Argentino" />
     </div>
   </div>
 </header>
@@ -602,12 +577,11 @@
         </p>
       </div>
       <div>
-        <blockquote class="historia-quote">
-          "Somos del barrio de Alonso de Córdova,
-          pero la hinchada se arma cada vez que hay
-          partido, sea en Vitacura o en La Serena."
+        <!-- TODO copy: cita pendiente de aportar por la comisión. Hasta entonces, dejamos el bloque visual vacío para no inventar atribución. -->
+        <blockquote class="historia-quote" data-pendiente="cita-comision">
+          <span class="italic-accent">Vamos ARGar.</span>
         </blockquote>
-        <p style="font-size: 13px; color: var(--gris); margin-top: 16px;">— Comisión directiva, 2024</p>
+        <p style="font-size: 13px; color: var(--gris); margin-top: 16px;">— Grito de la hinchada</p>
       </div>
     </div>
   </div>
@@ -621,30 +595,31 @@
       Fútbol 11 en cancha grande. Categoría DORADA para los maestros. Femenino activo desde
       el origen. Y una formativa Sub 2009/2010 para los pibes que vienen subiendo.
     </p>
+    <!-- TODO assets: cada .equipo-foto debe recibir foto grupal real (ver docs/03-assets-pendientes.md). Mientras tanto, gradiente de placeholder. -->
     <div class="equipos-grid">
       <div class="equipo-card">
-        <div class="equipo-foto"><span class="equipo-tag">Primer<br/>Equipo</span></div>
+        <div class="equipo-foto" data-pendiente="foto-primer-equipo"><span class="equipo-tag">Primer<br/>Equipo</span></div>
         <div class="equipo-body">
           <h3>Primer Equipo</h3>
           <p>Fútbol 11. DT: Jonatan Miranda. Capitán: Rama Corbascio.</p>
         </div>
       </div>
       <div class="equipo-card">
-        <div class="equipo-foto" style="background: linear-gradient(135deg, var(--oro), #c98e1f);"><span class="equipo-tag">Dorada</span></div>
+        <div class="equipo-foto" data-pendiente="foto-dorada" style="background: linear-gradient(135deg, var(--oro), #c98e1f);"><span class="equipo-tag">Dorada</span></div>
         <div class="equipo-body">
           <h3>Categoría DORADA</h3>
           <p>+35 / oro. Maestros que siguen pisando la cancha.</p>
         </div>
       </div>
       <div class="equipo-card">
-        <div class="equipo-foto" style="background: linear-gradient(135deg, #c84d8c, #832a59);"><span class="equipo-tag">Femenino</span></div>
+        <div class="equipo-foto" data-pendiente="foto-femenino" style="background: linear-gradient(135deg, #c84d8c, #832a59);"><span class="equipo-tag">Femenino</span></div>
         <div class="equipo-body">
           <h3>Equipo Femenino</h3>
           <p>Activo desde el origen del club, en torneos locales y de la colectividad.</p>
         </div>
       </div>
       <div class="equipo-card">
-        <div class="equipo-foto" style="background: linear-gradient(135deg, #2c8c5e, #154732);"><span class="equipo-tag">Sub<br/>09/10</span></div>
+        <div class="equipo-foto" data-pendiente="foto-sub0910" style="background: linear-gradient(135deg, #2c8c5e, #154732);"><span class="equipo-tag">Sub<br/>09/10</span></div>
         <div class="equipo-body">
           <h3>Sub 2009/2010 masculino</h3>
           <p>Categoría formativa. Los que vienen subiendo.</p>
@@ -661,19 +636,19 @@
       <p class="section-eyebrow" style="color: var(--oro);">Torneo emblema</p>
       <h2>Copa D10S — La Serena</h2>
       <p>
-        En 2026 cumple su <span class="italic-accent">5ª edición</span>. Es el torneo
-        emblemático del club: un fin de semana en La Serena, hinchada que viaja, equipos
-        amigos que llegan de todo Chile y una colecta solidaria para el Albergue Protege
-        que se hace en alianza con la Municipalidad de La Serena.
+        Es el torneo emblemático del club: un fin de semana en La Serena, hinchada que
+        viaja, equipos amigos que llegan de todo Chile y una colecta solidaria para el
+        Albergue Protege, en alianza con la Municipalidad de La Serena.
       </p>
       <p>
         El nombre es lo que parece: D10S = Dios + 10. Homenaje a Maradona,
         homenaje al fútbol como liturgia barrial.
       </p>
+      <!-- TODO data: número de edición vigente y fecha de la próxima copa, a confirmar con la comisión. -->
       <div class="d10s-meta">
-        <div><strong>5</strong><span>Ediciones</span></div>
-        <div><strong>2026</strong><span>Próxima</span></div>
         <div><strong>La Serena</strong><span>Sede</span></div>
+        <div><strong>Anual</strong><span>Frecuencia</span></div>
+        <div><strong>Albergue Protege</strong><span>Causa solidaria</span></div>
       </div>
     </div>
   </div>
@@ -738,8 +713,8 @@
       <div class="social-card alt">
         <h3>Cajas de alimentos — Escuela Las Nieves</h3>
         <p>
-          IV entrega de cajas de alimentos a familias de la Escuela Técnica Las Nieves,
-          en alianza con La Protect (compañía de seguros).
+          Entregas periódicas de cajas de alimentos a familias de la Escuela Técnica Las
+          Nieves, en alianza con La Protect.
         </p>
       </div>
     </div>
@@ -753,11 +728,10 @@
     <div class="memoria-grid" style="margin-top: 48px;">
       <div>
         <div class="memoria-fecha">24M</div>
-        <h3>50 años del Golpe — Nunca Más</h3>
+        <h3>Memoria, Verdad y Justicia</h3>
         <p>
-          Cada 24 de marzo el club conmemora el aniversario del Golpe Militar en Argentina,
-          con la consigna <span class="italic-accent">Memoria, Verdad y Justicia</span>.
-          No hay club argentino que pueda mirar para otro lado en esta fecha.
+          Cada 24 de marzo el club conmemora el aniversario del Golpe Militar de 1976 en
+          Argentina. No hay club argentino que pueda mirar para otro lado en esta fecha.
         </p>
       </div>
       <div>
@@ -778,16 +752,23 @@
     <p class="section-eyebrow">Sponsors y partners</p>
     <h2 class="section-title">Los que bancan el proyecto.</h2>
     <p class="section-bajada">Marcas amigas, partners institucionales y locales que sostienen al club.</p>
+    <!-- Logos provisionales descargados de fuentes públicas (sitio oficial / Wikimedia). Reemplazar por los oficiales cuando los aporte la comisión. Lista de pendientes en docs/03-assets-pendientes.md -->
     <div class="sponsors-grid">
-      <div class="sponsor-cell">FIT</div>
-      <div class="sponsor-cell">Stella<br/>Artois</div>
-      <div class="sponsor-cell">La Argentina<br/>Pizzería</div>
-      <div class="sponsor-cell">La Protect</div>
-      <div class="sponsor-cell">Marca<br/>Argentina</div>
-      <div class="sponsor-cell">Aniania<br/>Food</div>
-      <div class="sponsor-cell">Morfi<br/>Burger</div>
-      <div class="sponsor-cell">ArgmsJZ</div>
-      <div class="sponsor-cell">Maresta</div>
+      <div class="sponsor-cell" data-pendiente="confirmar-sponsor-fit" title="Pendiente de identificar">FIT</div>
+      <a class="sponsor-cell sponsor-cell-img" href="https://www.facebook.com/p/Stella-Artois-Chile-100084718021464/" target="_blank" rel="noopener" data-pendiente="confirmar-relacion-sponsor" title="Stella Artois Chile (relación con el club a confirmar)">
+        <img src="assets/sponsors/stella-artois.png" alt="Stella Artois" />
+      </a>
+      <a class="sponsor-cell sponsor-cell-img" href="https://www.laargentinapizzeria.cl/" target="_blank" rel="noopener" data-pendiente="logo-oficial-pendiente" title="La Argentina Pizzería" style="background: #000;">
+        <img src="assets/sponsors/la-argentina-pizzeria.png" alt="La Argentina Pizzería" />
+      </a>
+      <div class="sponsor-cell" data-pendiente="confirmar-sponsor-la-protect" title="Pendiente de identificar URL oficial">La Protect</div>
+      <a class="sponsor-cell sponsor-cell-img" href="https://www.argentina.gob.ar/marca-pais" target="_blank" rel="noopener" data-pendiente="confirmar-uso" title="Marca País Argentina (programa oficial del gobierno argentino)">
+        <img src="assets/sponsors/marca-pais-argentina.png" alt="Marca País Argentina" />
+      </a>
+      <div class="sponsor-cell" data-pendiente="confirmar-sponsor-aniania" title="Sin huella web — pendiente de aportar URL/logo">Aniania<br/>Food</div>
+      <a class="sponsor-cell" href="https://morfiburger.com/" target="_blank" rel="noopener" data-pendiente="logo-morfi-burger" title="Morfi Burger (cadena argentina, relación con el club a confirmar)">Morfi<br/>Burger</a>
+      <div class="sponsor-cell" data-pendiente="confirmar-sponsor-argmsjz" title="Pendiente de identificar">ArgmsJZ</div>
+      <a class="sponsor-cell" href="https://www.maresta.net/" target="_blank" rel="noopener" data-pendiente="logo-maresta" title="PYE Maresta (a confirmar)">Maresta</a>
       <div class="sponsor-cell" style="background: var(--celeste); color: var(--hueso);">+ vos<br/>?</div>
     </div>
   </div>
@@ -806,7 +787,7 @@
     <div class="footer-grid">
       <div>
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-          <svg style="width:48px;height:48px"><use href="#escudo"/></svg>
+          <img src="assets/escudo.png" alt="" style="width:48px;height:48px" />
           <span class="footer-brand-text">CSyDA</span>
         </div>
         <p class="footer-bio">
@@ -830,14 +811,13 @@
         <ul>
           <li><a href="mailto:presidencia@clubargen.com">presidencia@clubargen.com</a></li>
           <li><a href="mailto:clubsocialydeportivoargentino@gmail.com">clubsocialydeportivoargentino@gmail.com</a></li>
-          <li><a href="mailto:deportescsyda@gmail.com">deportescsyda@gmail.com</a></li>
         </ul>
       </div>
       <div>
         <h4>Redes</h4>
         <ul>
           <li><a href="https://instagram.com/clubargen" target="_blank" rel="noopener">Instagram @clubargen</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Facebook CSyDA</a></li>
+          <li><a href="https://www.facebook.com/p/Club-Social-y-Deportivo-Argentino-100024723744615/" target="_blank" rel="noopener">Facebook CSyDA</a></li>
         </ul>
       </div>
     </div>
