@@ -400,6 +400,138 @@
   .memoria-section p { color: rgba(250,248,243,0.75); font-size: 16px; }
   .memoria-section .italic-accent { color: var(--celeste); }
 
+  /* ===== ARCHIVO ===== */
+
+  .archivo-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 24px 0;
+    margin-bottom: 48px;
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
+  }
+  @media (max-width: 700px) { .archivo-metrics { grid-template-columns: repeat(2, 1fr); } }
+  .archivo-metrics > div { text-align: left; }
+  .archivo-metrics strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--celeste-dark);
+    margin-bottom: 6px;
+  }
+  .archivo-metrics span {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 64px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--linea);
+    transform: translateX(-50%);
+  }
+  @media (max-width: 800px) {
+    .timeline::before { left: 12px; }
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: start;
+    gap: 0;
+    margin-bottom: 56px;
+    position: relative;
+  }
+  @media (max-width: 800px) {
+    .timeline-item { grid-template-columns: 32px 1fr; gap: 16px; }
+  }
+  .timeline-year {
+    grid-column: 2;
+    justify-self: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--hueso);
+    background: var(--celeste-dark);
+    border-radius: 999px;
+    padding: 8px 14px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+  }
+  @media (max-width: 800px) {
+    .timeline-year { grid-column: 1; padding: 6px 8px; font-size: 11px; justify-self: start; }
+  }
+  .timeline-body {
+    padding-top: 4px;
+  }
+  .timeline-item:nth-child(odd) .timeline-body { grid-column: 1; text-align: right; padding-right: 24px; }
+  .timeline-item:nth-child(even) .timeline-body { grid-column: 3; padding-left: 24px; }
+  @media (max-width: 800px) {
+    .timeline-item:nth-child(odd) .timeline-body,
+    .timeline-item:nth-child(even) .timeline-body { grid-column: 2; text-align: left; padding: 0; }
+  }
+  .timeline-body h3 { font-size: 22px; margin-bottom: 8px; }
+  .timeline-body p { margin: 0; color: var(--gris); font-size: 15px; }
+
+  .archivo-grid-title { font-size: 24px; margin-bottom: 12px; }
+  .archivo-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin: 24px 0 32px;
+  }
+  @media (max-width: 800px) { .archivo-grid { grid-template-columns: repeat(3, 1fr); } }
+  .archivo-cell {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--celeste), var(--celeste-dark));
+    position: relative;
+    overflow: hidden;
+  }
+  .archivo-cell:nth-child(3n) { background: linear-gradient(135deg, var(--oro), #c98e1f); }
+  .archivo-cell:nth-child(4n) { background: linear-gradient(135deg, #c84d8c, #832a59); }
+  .archivo-cell:nth-child(5n) { background: linear-gradient(135deg, #2c8c5e, #154732); }
+  .archivo-cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 12px,
+      rgba(255,255,255,0.08) 12px,
+      rgba(255,255,255,0.08) 24px
+    );
+  }
+  .archivo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--tinta);
+    border-bottom: 2px solid var(--tinta);
+    padding-bottom: 4px;
+    transition: gap .15s;
+  }
+  .archivo-cta:hover { gap: 14px; }
+
   /* ===== SPONSORS ===== */
 
   .sponsors-grid {
@@ -528,6 +660,7 @@
       <a href="#d10s">Copa D10S</a>
       <a href="#social">Acción social</a>
       <a href="#memoria">Memoria</a>
+      <a href="#archivo">Archivo</a>
       <a href="#sumate">Sumate</a>
     </div>
   </div>
@@ -744,6 +877,79 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="archivo">
+  <div class="container">
+    <p class="section-eyebrow">Archivo</p>
+    <h2 class="section-title">Siete temporadas en <span class="italic-accent">cancha y barrio</span>.</h2>
+    <p class="section-bajada">
+      El archivo del club vive en Instagram desde 2019. Mientras se migra el export oficial
+      de Meta para tener acá las fotos en alta resolución, dejamos los hitos que marcaron
+      cada temporada.
+    </p>
+
+    <!-- TODO data: confirmar métricas con la comisión, los números vienen del relevamiento previo en Instagram. -->
+    <div class="archivo-metrics" data-pendiente="metricas-archivo">
+      <div><strong>577</strong><span>Publicaciones</span></div>
+      <div><strong>2019</strong><span>Primer post</span></div>
+      <div><strong>4</strong><span>Categorías documentadas</span></div>
+      <div><strong>1.5K</strong><span>Seguidores en IG</span></div>
+    </div>
+
+    <ol class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-body">
+          <h3>Fundación del club</h3>
+          <p>Nace el Club Social y Deportivo Argentino en Vitacura, Santiago, como punto de encuentro de la colectividad argentina en la Región Metropolitana.</p>
+        </div>
+      </li>
+      <li class="timeline-item" data-pendiente="hitos-2020-2023">
+        <div class="timeline-year">2020 — 2023</div>
+        <div class="timeline-body">
+          <h3>Primeros años</h3>
+          <p>Hitos pendientes de aporte por la comisión: primer torneo disputado, primer campeonato, formación de la categoría DORADA y femenino, alianzas con la Municipalidad de La Serena.</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-body">
+          <h3>Campeón Copa de Naciones</h3>
+          <p>Argentina figura como campeón de la VI edición de la Copa de Naciones según el sitio oficial del torneo. <span data-pendiente="confirmar-palmares">A confirmar con la comisión qué selección representó al país.</span></p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-body">
+          <h3>VIII Edición Copa de Naciones</h3>
+          <p>El club participa en la VIII edición de la Copa de Naciones, en curso en Santiago. <a href="https://www.copadenaciones.cl/equipo/argentina/" target="_blank" rel="noopener">Ver fixture y resultados →</a></p>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="archivo-grid-title">Galería</h3>
+    <p class="section-bajada" style="margin-bottom: 24px;">
+      Esta grilla mostrará las fotos del archivo cuando se migre el export oficial de Meta.
+      Por ahora, placeholders de color.
+    </p>
+    <!-- TODO assets: reemplazar cada .archivo-cell por <img src="assets/archivo/<año>-<slug>.jpg"> cuando llegue el export Meta. -->
+    <div class="archivo-grid" data-pendiente="fotos-archivo">
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+      <div class="archivo-cell"></div>
+    </div>
+    <a class="archivo-cta" href="https://instagram.com/clubargen" target="_blank" rel="noopener">Ver archivo completo en Instagram →</a>
   </div>
 </section>
 

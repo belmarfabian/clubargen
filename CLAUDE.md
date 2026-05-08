@@ -53,7 +53,7 @@ Razonamiento detallado en `docs/02-stack-tecnico.md`.
 4. **Instagram:** el export oficial de Meta es la fuente preferida. Mientras no llegue, espejos/scrapers (`imginn`, `picuki`, `dumpor`, etc.) son aceptables — la mayoría hoy bloquea WebFetch, así que probablemente requiera otra herramienta (Claude for Chrome con sesión activa, o que el admin descargue desde Instagram).
 5. **No agregar features fuera de scope:** tienda, sistema de socios pago, calendario sincronizado — solo si la comisión las pide.
 6. **Idioma:** español.
-7. **Auto-aceptación de tool calls activada.** Confirmá para acciones destructivas o que afecten sistemas compartidos (push, deploy, DNS, mensajes a terceros).
+7. **Auto-aceptación de tool calls activada.** Después de cada tanda de cambios al sitio, hacer commit + push directo a `main` para que GitHub Pages quede actualizado — el usuario quiere ver los cambios reflejados rápido y mandar la URL. Sí confirmá para acciones realmente destructivas (cambios DNS, force-push, eliminar branches) o mensajes a terceros.
 
 ## Pendientes que solo puede aportar la comisión
 
